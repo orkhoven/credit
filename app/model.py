@@ -1,6 +1,6 @@
 import numpy as np
 #from PIL import Image
-import lightgbm as lgbm
+
 import pickle
 import json
 import pandas as pd
