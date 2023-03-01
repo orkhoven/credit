@@ -12,8 +12,10 @@ app = FastAPI()
 model = load_model()
 # Define the response JSON
 
+class Prediction(BaseModel):
+    Pourcentage_de_non_solvabilité: int
     #Pourcentage_de_solvabilité: int
-@app.post("/predict")
+@app.post("/predict", response=Prediction)
 async def prediction(file: UploadFile = File(...)):
     # Ensure that the file is an image
     #if not file.content_type.startswith("image/"):
@@ -29,7 +31,7 @@ async def prediction(file: UploadFile = File(...)):
     response = predict(sample, model)
     #response2 = predict2(sample, chk_id, model)
     # return the response as a JSON
-    return response 
+    return { "Pourcentage_de_non_solvabilité": response }
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=5000)
