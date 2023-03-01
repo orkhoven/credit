@@ -33,7 +33,7 @@ async def prediction(file: UploadFile = File(...)):
     response = predict(sample, model)
     #response2 = predict2(sample, chk_id, model)
     # return the response as a JSON
-    return response
+    return { "Pourcentage_de_non_solvabilité": response }
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=5000)
