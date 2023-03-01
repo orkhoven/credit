@@ -8,6 +8,7 @@ from pydantic import BaseModel
 import json
 import pandas as pd
 
+
 app = FastAPI()
 model = load_model()
 # Define the response JSON
